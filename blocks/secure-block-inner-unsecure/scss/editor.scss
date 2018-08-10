@@ -1,0 +1,31 @@
+@charset "UTF-8";
+
+/**
+ * Variables
+ **/
+$matt_watson_color_primary: #6c2a22;
+$matt_watson_color_gutenberg_grey: #f3f3f4;
+$matt_watson_color_gutenberg_black: #32373c;
+
+/**
+ * Default Styles
+ *
+ * The default styles for the block in the editor.
+ */
+.wp-block-matt-watson-secure-block-inner-unsecure {
+
+	&__handle {
+		position: relative;
+		background-color: $matt_watson_color_gutenberg_grey;
+		color: $matt_watson_color_gutenberg_black;
+		padding: 5px 20px 5px 10px;
+		font-size: 12px;
+	}
+
+	&__icon {
+		position: absolute;
+		top: 8px;
+		right: 8px;
+		opacity: 0.8;
+	}
+}
