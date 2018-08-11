@@ -56,10 +56,7 @@ export default registerBlockType(
 						</span>
 					</header>
 					<InnerBlocks
-						template={ [
-							[ 'core/paragraph', { 'placeholder': 'Write unsecured content' } ]
-						] }
-						templateLock={false}
+						templateLock={ false }
 						/>
 				</div>
 			];

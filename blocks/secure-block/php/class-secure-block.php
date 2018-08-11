@@ -69,6 +69,7 @@ class Secure_Block {
 }
 
 function matt_watson_secure_blocks_for_gutenberg_render( $attributes, $content ) {
+
 	if ( is_admin() ) {
 		return $content;
 	}

@@ -4,7 +4,7 @@ Tags: gutenberg, block, secure, password, protected, blocks, gutenberg blocks, g
 Requires at least: 4.9.6
 Tested up to: 4.9.6
 Requires PHP: 5.6
-Stable tag: 1.1.1
+Stable tag: 1.2.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -66,6 +66,10 @@ TBC
 = 1.1.1 =
 
 * Removed frontend asset enqueues that didn't do anything.
+
+= 1.2.0 =
+
+* Fixed issue that prevented blocks saving properly in some scenarios.
 
 == Roadmap ==
 

@@ -137,13 +137,13 @@ export default registerBlockType(
 					</header>
 					<InnerBlocks
 						template={ [
-							[ 'matt-watson/secure-block-inner-secure', {} ],
-							[ 'matt-watson/secure-block-inner-unsecure', {} ]
+							[ 'matt-watson/secure-block-inner-secure' ],
+							[ 'matt-watson/secure-block-inner-unsecure' ],
 						] }
 						templateLock="all"
 						allowedBlocksExample={ [
 							[ 'matt-watson/secure-block-inner-secure' ],
-							[ 'matt-watson/secure-block-inner-unsecure' ]
+							[ 'matt-watson/secure-block-inner-unsecure' ],
 						] }
 						/>
 					<footer className={ classnames( props.className ) + '__footer' }>
