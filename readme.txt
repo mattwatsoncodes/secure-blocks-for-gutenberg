@@ -61,7 +61,7 @@ TBC
 
 == Roadmap ==
 
-Features coming soon to aid with securing sites
+Features coming soon to aid with securing sites:
 
 - Login Block
 - Register Block
