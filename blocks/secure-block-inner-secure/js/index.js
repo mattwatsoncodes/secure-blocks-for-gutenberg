@@ -45,7 +45,6 @@ export default registerBlockType(
 		parent:     [ 'matt-watson/secure-block' ],
 		edit: ( props => {
 			const { attributes: className, setAttributes } = props;
-			console.log( props );
 			return [
 				<div className={ classnames( props.className ) }>
 					<InnerBlocks
