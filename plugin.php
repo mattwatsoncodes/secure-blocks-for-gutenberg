@@ -3,7 +3,7 @@
  * Secure Blocks for Gutenberg
  *
  * @link              https://github.com/mwtsn/secure-blocks-for-gutenberg
- * @package           matt_watson\secure-blocks-for-gutenberg
+ * @package           matt-watson\secure-blocks-for-gutenberg
  *
  * Plugin Name:       Secure Blocks for Gutenberg
  * Plugin URI:        https://github.com/mwtsn/secure-blocks-for-gutenberg

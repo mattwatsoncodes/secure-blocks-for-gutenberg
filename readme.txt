@@ -25,8 +25,6 @@ The plugin provides the following functionality:
 - Display content to users within certain user roles
 - Display alternative content to users not in those user roles
 
-If you are using this plugin in your project [I would love to hear about it](mailto:matt@mwatson.co.uk).
-
 == Installation ==
 
 1. Backup your WordPress install
