@@ -16,3 +16,6 @@ The plugin provides the following functionality:
 ## Build Notes
 
 Install Webpack globally: `npm install --global webpack`
+
+Build with `npm run dev` or `npm run build`
+
