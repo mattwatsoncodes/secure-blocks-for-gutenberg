@@ -4,7 +4,7 @@ Tags: gutenberg, block, secure, password, protected, blocks, gutenberg blocks, g
 Requires at least: 4.9.6
 Tested up to: 4.9.6
 Requires PHP: 5.6
-Stable tag: 1.0.2
+Stable tag: 1.1.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -58,6 +58,10 @@ TBC
 = 1.0.0 =
 
 * First release
+
+= 1.1.0 =
+
+* Fixed issue whereby the plugin would not render in certain server environments
 
 == Roadmap ==
 
