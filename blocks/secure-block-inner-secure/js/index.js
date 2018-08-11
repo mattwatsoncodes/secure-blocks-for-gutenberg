@@ -48,7 +48,7 @@ export default registerBlockType(
 			return [
 				<div className={ classnames( props.className ) }>
 					<InnerBlocks
-						template={ [
+					template={ [
 							[ 'core/paragraph', { 'placeholder': 'Write secure content' } ]
 						] }
 						templateLock={false}

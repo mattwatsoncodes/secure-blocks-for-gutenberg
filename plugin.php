@@ -8,7 +8,7 @@
  * Plugin Name:       Secure Blocks for Gutenberg
  * Plugin URI:        https://github.com/mwtsn/secure-blocks-for-gutenberg
  * Description:       Secure your content in the editor by user role with Secure Blocks for Gutenberg
- * Version:           1.1.0
+ * Version:           1.1.1
  * Author:            Matt Watson <matt@mwatson.co.uk>
  * Author URI:        https://mwatson.co.uk
  * License:           GPL-3.0+
@@ -75,7 +75,7 @@ class Main {
 
 		// Load Assets
 		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_assets' ) ); // Load Editor Assets
-		add_action( 'enqueue_block_assets', array( $this, 'assets' ) );               // Load Front End Assets
+		// add_action( 'enqueue_block_assets', array( $this, 'assets' ) );               // Load Front End Assets
 		add_action( 'admin_enqueue_scripts', array( $this, 'admin_assets' ) );        // Load Admin Assets
 
 		// Add Settings Page Link.
