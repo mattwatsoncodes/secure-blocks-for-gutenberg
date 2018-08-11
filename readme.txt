@@ -4,7 +4,7 @@ Tags: gutenberg, block, secure, password, protected, blocks, gutenberg blocks, g
 Requires at least: 4.9.6
 Tested up to: 4.9.6
 Requires PHP: 5.6
-Stable tag: 1.2.0
+Stable tag: 1.2.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -17,6 +17,10 @@ Secure your content in the editor by user role with Secure Blocks for Gutenberg.
 Using Secure Blocks you can add any Gutenberg block inside a secure block, have it render only to logged in users, or lock it down to a user role of your choosing.
 
 Secure Blocks also provides an additional area that can display blocks to users that do not have permission to view the content.
+
+For more information [read the Secure Blocks introductory blog post](https://mwatson.co.uk/introducing-secure-blocks-for-wordpress-gutenberg/), or view the video:
+
+[youtube https://youtu.be/B1bNllEBDNo]
 
 The plugin provides the following functionality:
 
@@ -33,7 +37,7 @@ The plugin provides the following functionality:
 
 = Minimum Requirements =
 
-You’ll need **Gutenberg Editor** active on your site.
+You’ll need the **Gutenberg** editor active on your site.
 
 == Frequently Asked Questions ==
 TBC
