@@ -13,9 +13,12 @@ The plugin provides the following functionality:
 - Display content to users within certain user roles
 - Display alternative content to users not in those user roles
 
+For more information [read the Secure Blocks introductory blog post](https://mwatson.co.uk/introducing-secure-blocks-for-wordpress-gutenberg/), or view the introductionary video:
+
+[![Introducing Secure Blocks for WordPress Gutenberg](https://img.youtube.com/vi/B1bNllEBDNo/0.jpg)](https://youtu.be/B1bNllEBDNo)
+
 ## Build Notes
 
-Install Webpack globally: `npm install --global webpack`
-
-Build with `npm run dev` or `npm run build`
-
+1. Install Webpack globally: `npm install --global webpack`
+2. Install everything you need: `npm install`
+3. Build with `npm run dev` or `npm run build`
