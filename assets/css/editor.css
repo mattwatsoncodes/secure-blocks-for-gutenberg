@@ -1,2 +1,74 @@
-.wp-block-matt-watson-secure-block__handle{position:relative;background-color:#f3f3f4;color:#32373c;padding:5px 30px 5px 10px;font-size:12px}.wp-block-matt-watson-secure-block__roles .role:after{content:", "}.wp-block-matt-watson-secure-block__roles .role:last-of-type:after{content:""}.wp-block-matt-watson-secure-block__roles .role__name{font-family:monospace;background:white;padding:2px 4px 2px 4px;opacity:.8}.wp-block-matt-watson-secure-block__icon{position:absolute;top:8px;right:8px;opacity:0.8}.wp-block-matt-watson-secure-block__description{display:block}.wp-block-matt-watson-secure-block__description strong{font-family:monospace;background:white;padding:2px 4px 2px 4px;opacity:.8;font-weight:normal}.wp-block-matt-watson-secure-block__footer{background-color:#f3f3f4;color:#32373c;padding:5px 10px 5px 10px;font-size:12px;text-align:right;font-style:italic}
-.wp-block-matt-watson-secure-block-inner-unsecure__handle{position:relative;background-color:#f3f3f4;color:#32373c;padding:5px 20px 5px 10px;font-size:12px}.wp-block-matt-watson-secure-block-inner-unsecure__icon{position:absolute;top:8px;right:8px;opacity:0.8}
+/**
+ * Variables
+ **/
+/**
+ * Default Styles
+ *
+ * The default styles for the block in the editor.
+ */
+.wp-block-matt-watson-secure-block__handle {
+  position: relative;
+  background-color: #f3f3f4;
+  color: #32373c;
+  padding: 5px 30px 5px 10px;
+  font-size: 12px; }
+
+.wp-block-matt-watson-secure-block__roles .role:after {
+  content: ", "; }
+
+.wp-block-matt-watson-secure-block__roles .role:last-of-type:after {
+  content: ""; }
+
+.wp-block-matt-watson-secure-block__roles .role__name {
+  font-family: monospace;
+  background: white;
+  padding: 2px 4px 2px 4px;
+  opacity: .8; }
+
+.wp-block-matt-watson-secure-block__icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  opacity: 0.8; }
+
+.wp-block-matt-watson-secure-block__description {
+  display: block; }
+  .wp-block-matt-watson-secure-block__description strong {
+    font-family: monospace;
+    background: white;
+    padding: 2px 4px 2px 4px;
+    opacity: .8;
+    font-weight: normal; }
+
+.wp-block-matt-watson-secure-block__footer {
+  background-color: #f3f3f4;
+  color: #32373c;
+  padding: 5px 10px 5px 10px;
+  font-size: 12px;
+  text-align: right;
+  font-style: italic; }
+/**
+ * Default Styles
+ *
+ * The default styles for the block frontend.
+ */
+/**
+ * Variables
+ **/
+/**
+ * Default Styles
+ *
+ * The default styles for the block in the editor.
+ */
+.wp-block-matt-watson-secure-block-inner-unsecure__handle {
+  position: relative;
+  background-color: #f3f3f4;
+  color: #32373c;
+  padding: 5px 20px 5px 10px;
+  font-size: 12px; }
+
+.wp-block-matt-watson-secure-block-inner-unsecure__icon {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  opacity: 0.8; }

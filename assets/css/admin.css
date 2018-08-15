@@ -1,1 +1,15 @@
-.secure-block-inspector label.secure-block-inspector__label{max-width:100%}.secure-block-inspector .secure-block-inspector__control{width:100%}.secure-block-inspector .secure-block-inspector__control>div>div{margin-top:0px}.secure-block-inspector .muted{opacity:.6}
+/**
+ * Inspector
+ *
+ * Styles for the secure block inspector
+ */
+.secure-block-inspector label.secure-block-inspector__label {
+  max-width: 100%; }
+
+.secure-block-inspector .secure-block-inspector__control {
+  width: 100%; }
+  .secure-block-inspector .secure-block-inspector__control > div > div {
+    margin-top: 0px; }
+
+.secure-block-inspector .muted {
+  opacity: .6; }

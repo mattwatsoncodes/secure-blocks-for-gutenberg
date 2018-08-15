@@ -17,24 +17,71 @@ import Select from 'react-select';
  */
 const { __ }                = wp.i18n;
 const { registerBlockType } = wp.blocks;
+const { apiFetch }          = wp;
+const {
+	registerStore,
+	withSelect,
+} = wp.data;
 const {
 	InnerBlocks,
-	RichText,
-	AlignmentToolbar,
-	BlockControls,
-	BlockAlignmentToolbar,
 	InspectorControls,
 } = wp.editor;
 const {
-	Toolbar,
-	Button,
-	Tooltip,
 	PanelBody,
 	PanelRow,
-	FormToggle,
-	withAPIData,
 	Spinner,
 } = wp.components;
+
+const actions = {
+	setUserRoles( userRoles ) {
+		return {
+			type: 'SET_USER_ROLES',
+			userRoles,
+		};
+	},
+	receiveUserRoles( path ) {
+		return {
+			type: 'RECEIVE_USER_ROLES',
+			path,
+		};
+	},
+};
+
+const store = registerStore( 'matt-watson/secure-block', {
+	reducer( state = { userRoles: {} }, action ) {
+
+		switch ( action.type ) {
+			case 'SET_USER_ROLES':
+				return {
+					...state,
+					userRoles: action.userRoles,
+				};
+			case 'RECEIVE_USER_ROLES':
+				return action.userRoles;
+		}
+
+		return state;
+	},
+
+	actions,
+
+	selectors: {
+		receiveUserRoles( state ) {
+			const { userRoles } = state;
+			return userRoles;
+		},
+	},
+
+	resolvers: {
+		* receiveUserRoles( state ) {
+			const userRoles = apiFetch( { path: '/matt-watson/secure-blocks/v1/user-roles/' } )
+				.then( userRoles => {
+					return actions.setUserRoles( userRoles );
+				} )
+			yield userRoles;
+		},
+	},
+} );
 
 /**
  * Register secure block
@@ -57,12 +104,12 @@ export default registerBlockType(
 				default: null,
 			},
 		},
-		edit: withAPIData( props => {
+		edit: withSelect( ( select ) => {
 				return {
-					roles: '/matt-watson/secure-blocks/v1/user-roles/'
+					userRoles: select('matt-watson/secure-block').receiveUserRoles(),
 				};
 			} )( props => {
-			const { attributes: { role }, roles, className, setAttributes } = props;
+			const { attributes: { role }, userRoles, className, setAttributes } = props;
 			const handleRoleChange = ( role ) => setAttributes( { role: JSON.stringify( role ) } );
 			let rolesToString = '';
 			let selectedRoles = [];
@@ -70,7 +117,7 @@ export default registerBlockType(
 				selectedRoles = JSON.parse( role );
 			}
 
-			if ( ! roles.data ) {
+			if ( ! userRoles.length ) {
 				return (
 					<p className={className} >
 						<Spinner />
@@ -92,7 +139,7 @@ export default registerBlockType(
 								name='secure-block-roles'
 								value={ selectedRoles }
 								onChange={ handleRoleChange }
-								options={ roles.data }
+								options={ userRoles }
 								isMulti='true'
 							 />
 						</PanelRow>
