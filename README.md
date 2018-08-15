@@ -6,6 +6,10 @@ Using Secure Blocks you can add any Gutenberg block inside a secure block, have 
 
 Secure Blocks also provides an additional area that can display blocks to users that do not have permission to view the content.
 
+For more information [read the Secure Blocks introductory blog post](https://mwatson.co.uk/introducing-secure-blocks-for-wordpress-gutenberg/), or view the video:
+
+[![Introducing Secure Blocks for WordPress Gutenberg](https://img.youtube.com/vi/B1bNllEBDNo/0.jpg)](https://youtu.be/B1bNllEBDNo)
+
 The plugin provides the following functionality:
 
 - Display content only to logged-users
@@ -15,7 +19,6 @@ The plugin provides the following functionality:
 
 ## Build Notes
 
-Install Webpack globally: `npm install --global webpack`
-
-Build with `npm run dev` or `npm run build`
-
+1. Install Webpack globally: `npm install --global webpack`
+2. Install everything you need: `npm install`
+3. Build with `npm run dev` or `npm run build`
