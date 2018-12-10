@@ -56,8 +56,6 @@ const store = registerStore( 'matt-watson/secure-block', {
 					...state,
 					userRoles: action.userRoles,
 				};
-			case 'RECEIVE_USER_ROLES':
-				return action.userRoles;
 		}
 
 		return state;
@@ -72,13 +70,16 @@ const store = registerStore( 'matt-watson/secure-block', {
 		},
 	},
 
+	controls: {
+		RECEIVE_USER_ROLES( action ) {
+			return apiFetch( { path: action.path } );
+		},
+	},
+
 	resolvers: {
 		* receiveUserRoles( state ) {
-			const userRoles = apiFetch( { path: '/matt-watson/secure-blocks/v1/user-roles/' } )
-				.then( userRoles => {
-					return actions.setUserRoles( userRoles );
-				} )
-			yield userRoles;
+			const userRoles = yield actions.receiveUserRoles( '/matt-watson/secure-blocks/v1/user-roles/' );
+			return actions.setUserRoles( userRoles );
 		},
 	},
 } );

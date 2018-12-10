@@ -1,10 +1,10 @@
 === Secure Blocks for Gutenberg ===
 Contributors: mwtsn
 Tags: gutenberg, block, secure, password, protected, blocks, gutenberg blocks, gutenberg block, editor, addon, add on, add-on, gutenberg addon, wordpress 5, passworded, login, logged-in
-Requires at least: 4.9.6
-Tested up to: 4.9.6
+Requires at least: 5.0.0
+Tested up to: 5.0.0
 Requires PHP: 5.6
-Stable tag: 1.3.1
+Stable tag: 1.4.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -78,6 +78,10 @@ TBC
 = 1.3.0 =
 
 * Replaced `withAPIData` with `withSelect` due to depreciation in core.
+
+= 1.4.0 =
+
+* Updated `withSelect` to use latest API.
 
 == Roadmap ==
 
