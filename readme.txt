@@ -1,10 +1,10 @@
 === Secure Blocks for Gutenberg ===
 Contributors: mwtsn
 Tags: gutenberg, block, secure, password, protected, blocks, gutenberg blocks, gutenberg block, editor, addon, add on, add-on, gutenberg addon, wordpress 5, passworded, login, logged-in
-Requires at least: 5.0.0
-Tested up to: 5.0.0
+Requires at least: 5.0
+Tested up to: 5.0
 Requires PHP: 5.6
-Stable tag: 1.4.0
+Stable tag: 1.4.1
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
