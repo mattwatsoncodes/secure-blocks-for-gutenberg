@@ -1,88 +1,28 @@
 /**
  * Import Assets
  */
-import '../scss/style.scss';
-import '../scss/editor.scss';
 import '../scss/admin.scss';
+import '../scss/editor.scss';
+import '../scss/style.scss';
+
 
 /**
  * Block Dependencies
  */
-import icons from './icons';
 import classnames from 'classnames';
-import Select from 'react-select';
+import icons from './icons';
+import Inspector from './inspector';
+import store from './store';
 
 /**
  * Internal Block Libraries
  */
-const { __ }                = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { apiFetch }          = wp;
-const {
-	registerStore,
-	withSelect,
-} = wp.data;
-const {
-	InnerBlocks,
-	InspectorControls,
-} = wp.editor;
-const {
-	PanelBody,
-	PanelRow,
-	Spinner,
-} = wp.components;
+const { Spinner }           = wp.components;
+const { withSelect }        = wp.data;
+const { InnerBlocks }       = wp.editor;
+const { __ }                = wp.i18n;
 
-const actions = {
-	setUserRoles( userRoles ) {
-		return {
-			type: 'SET_USER_ROLES',
-			userRoles,
-		};
-	},
-	receiveUserRoles( path ) {
-		return {
-			type: 'RECEIVE_USER_ROLES',
-			path,
-		};
-	},
-};
-
-const store = registerStore( 'matt-watson/secure-block', {
-	reducer( state = { userRoles: {} }, action ) {
-
-		switch ( action.type ) {
-			case 'SET_USER_ROLES':
-				return {
-					...state,
-					userRoles: action.userRoles,
-				};
-		}
-
-		return state;
-	},
-
-	actions,
-
-	selectors: {
-		receiveUserRoles( state ) {
-			const { userRoles } = state;
-			return userRoles;
-		},
-	},
-
-	controls: {
-		RECEIVE_USER_ROLES( action ) {
-			return apiFetch( { path: action.path } );
-		},
-	},
-
-	resolvers: {
-		* receiveUserRoles( state ) {
-			const userRoles = yield actions.receiveUserRoles( '/matt-watson/secure-blocks/v1/user-roles/' );
-			return actions.setUserRoles( userRoles );
-		},
-	},
-} );
 
 /**
  * Register secure block
@@ -110,9 +50,7 @@ export default registerBlockType(
 					userRoles: select('matt-watson/secure-block').receiveUserRoles(),
 				};
 			} )( props => {
-			const { attributes: { role }, userRoles, className, setAttributes } = props;
-			const handleRoleChange = ( role ) => setAttributes( { role: JSON.stringify( role ) } );
-			let rolesToString = '';
+			const { attributes: { role }, userRoles, className, setAttributes, isSelected } = props;
 			let selectedRoles = [];
 			if ( null !== role ) {
 				selectedRoles = JSON.parse( role );
@@ -127,34 +65,13 @@ export default registerBlockType(
 				);
 			}
 			return [
-				<InspectorControls>
-					<PanelBody title={ __( 'Select Roles', 'secure-blocks-for-gutenberg' ) } className="secure-block-inspector">
-						<PanelRow>
-							<label htmlFor="secure-block-roles" className="secure-block-inspector__label">
-								{ __( 'Secure content is presented to users that are logged-in and in the following roles:', 'secure-blocks-for-gutenberg' ) }
-							</label>
-						</PanelRow>
-						<PanelRow>
-							<Select
-								className="secure-block-inspector__control"
-								name='secure-block-roles'
-								value={ selectedRoles }
-								onChange={ handleRoleChange }
-								options={ userRoles }
-								isMulti='true'
-							 />
-						</PanelRow>
-						<PanelRow>
-							<em className="muted">{ __( 'No selected roles mean that secure content will be presented to all logged-in users.', 'secure-blocks-for-gutenberg' ) }</em>
-						</PanelRow>
-					</PanelBody>
-				</InspectorControls>,
-				<div className={ classnames( props.className ) }>
-					<header className={ classnames( props.className ) + '__handle' }>
-						<span className={ classnames( props.className ) + '__icon' }>
+				<Inspector { ...{ setAttributes, ...props, selectedRoles } }/>,
+				<div className={ classnames( className ) }>
+					<header className={ classnames( className ) + '__handle' }>
+						<span className={ classnames( className ) + '__icon' }>
 							{ icons.lock }
 						</span>
-						<span className={classnames( props.className ) + '__description'}>
+						<span className={ classnames( className ) + '__description'}>
 							<span>{ __( 'Content shown to users that are ', 'secure-blocks-for-gutenberg' ) }</span>
 							<strong>{ __( 'logged-in', 'secure-blocks-for-gutenberg' ) }</strong>
 							{ selectedRoles.length === 0  ?

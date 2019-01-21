@@ -1,37 +1,22 @@
 /**
  * Import Assets
  */
-import '../scss/style.scss';
 import '../scss/editor.scss';
+import '../scss/style.scss';
+
 
 /**
  * Block Dependencies
  */
-import icons from './icons';
 import classnames from 'classnames';
-import Select from 'react-select';
 
 /**
  * Internal Block Libraries
  */
-const { __ }                = wp.i18n;
+
 const { registerBlockType } = wp.blocks;
-const {
-	InnerBlocks,
-	RichText,
-	AlignmentToolbar,
-	BlockControls,
-	BlockAlignmentToolbar,
-	InspectorControls,
-} = wp.editor;
-const {
-	Toolbar,
-	Button,
-	Tooltip,
-	PanelBody,
-	PanelRow,
-	FormToggle,
-} = wp.components;
+const { InnerBlocks }       = wp.editor;
+const { __ }                = wp.i18n;
 
 /**
  * Register secure block

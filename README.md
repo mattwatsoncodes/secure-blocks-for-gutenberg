@@ -8,7 +8,7 @@ Secure Blocks also provides an additional area that can display blocks to users 
 
 For more information [read the Secure Blocks introductory blog post](https://mwatson.co.uk/introducing-secure-blocks-for-wordpress-gutenberg/), or view the video:
 
-[![Introducing Secure Blocks for WordPress Gutenberg](https://img.youtube.com/vi/B1bNllEBDNo/0.jpg)](https://youtu.be/B1bNllEBDNo)
+[![Introducing Secure Blocks for WordPress Gutenberg](https://img.youtube.com/vi/fXGPeWo_nzg/0.jpg)](https://youtu.be/fXGPeWo_nzg)
 
 The plugin provides the following functionality:
 

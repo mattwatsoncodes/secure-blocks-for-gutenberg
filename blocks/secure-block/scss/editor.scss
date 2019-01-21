@@ -3,7 +3,7 @@
 /**
  * Variables
  **/
-$matt_watson_color_primary: #6c2a22;
+$matt_watson_color_primary: #75251e;
 $matt_watson_color_gutenberg_grey: #f3f3f4;
 $matt_watson_color_gutenberg_black: #32373c;
 
@@ -20,6 +20,7 @@ $matt_watson_color_gutenberg_black: #32373c;
 		color: $matt_watson_color_gutenberg_black;
 		padding: 5px 30px 5px 10px;
 		font-size: 12px;
+		margin-bottom: 2em;
 	}
 
 	&__roles {

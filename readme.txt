@@ -4,7 +4,7 @@ Tags: gutenberg, block, secure, password, protected, blocks, gutenberg blocks, g
 Requires at least: 5.0
 Tested up to: 5.0
 Requires PHP: 5.6
-Stable tag: 1.4.1
+Stable tag: 1.4.2
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -20,7 +20,7 @@ Secure Blocks also provides an additional area that can display blocks to users 
 
 For more information [read the Secure Blocks introductory blog post](https://mwatson.co.uk/introducing-secure-blocks-for-wordpress-gutenberg/), or view the video:
 
-[youtube https://youtu.be/B1bNllEBDNo]
+[youtube https://youtu.be/fXGPeWo_nzg]
 
 The plugin provides the following functionality:
 
@@ -82,6 +82,10 @@ TBC
 = 1.4.0 =
 
 * Updated `withSelect` to use latest API.
+
+= 1.4.2 =
+
+* Bug fixes and refactor.
 
 == Roadmap ==
 
