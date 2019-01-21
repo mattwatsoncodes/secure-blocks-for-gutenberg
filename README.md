@@ -6,7 +6,7 @@ Using Secure Blocks you can add any Gutenberg block inside a secure block, have 
 
 Secure Blocks also provides an additional area that can display blocks to users that do not have permission to view the content.
 
-For more information [read the Secure Blocks introductory blog post](https://mwatson.co.uk/introducing-secure-blocks-for-wordpress-gutenberg/), or view the video:
+For more information [read the Secure Blocks introductory blog post](https://mattwatson.codes/introducing-secure-blocks-for-wordpress-gutenberg/), or view the video:
 
 [![Introducing Secure Blocks for WordPress Gutenberg](https://img.youtube.com/vi/fXGPeWo_nzg/0.jpg)](https://youtu.be/fXGPeWo_nzg)
 
