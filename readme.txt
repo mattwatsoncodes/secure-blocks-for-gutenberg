@@ -4,7 +4,7 @@ Tags: gutenberg, block, secure, password, protected, blocks, gutenberg blocks, g
 Requires at least: 5.0
 Tested up to: 5.0
 Requires PHP: 5.6
-Stable tag: 1.4.3
+Stable tag: 2.0.0
 License: GPLv3
 License URI: https://www.gnu.org/licenses/gpl-3.0.html
 
@@ -87,11 +87,14 @@ TBC
 
 * Bug fixes and refactor.
 
+= 2.0.0 =
+
+* Introducing the 'Login Block'.
+
 == Roadmap ==
 
 Features coming soon to aid with securing sites:
 
-- Login Block
 - Register Block
 - Password Reset Block
 - Restrict entire pages / posts, not just inline content

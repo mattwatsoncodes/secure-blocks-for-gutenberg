@@ -2,6 +2,8 @@
 
 Secure your content in the editor by user role with Secure Blocks for Gutenberg.
 
+[Download Secure Blocks for Gutenberg on the WordPress Plugin Repository](https://wordpress.org/plugins/secure-blocks-for-gutenberg/)
+
 Using Secure Blocks you can add any Gutenberg block inside a secure block, have it render only to logged in users, or lock it down to a user role of your choosing.
 
 Secure Blocks also provides an additional area that can display blocks to users that do not have permission to view the content.

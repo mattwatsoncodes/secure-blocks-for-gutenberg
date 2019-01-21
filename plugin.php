@@ -8,7 +8,7 @@
  * Plugin Name:       Secure Blocks for Gutenberg
  * Plugin URI:        https://github.com/mwtsn/secure-blocks-for-gutenberg
  * Description:       Secure your content in the editor by user role with Secure Blocks for Gutenberg
- * Version:           1.4.3
+ * Version:           2.0.0
  * Author:            Matt Watson <hello@mattwatson.codes>
  * Author URI:        https://mattwatson.codes
  * License:           GPL-3.0+
@@ -168,8 +168,13 @@ class Main {
 	public function includes() {
 
 		// Load Classes
+		require_once 'blocks/login-block/php/class-login-block.php';
 		require_once 'blocks/secure-block/php/class-secure-block.php';
+
+		$login_block  = new Login_Block();
 		$secure_block = new Secure_Block();
+
+		$login_block->run();
 		$secure_block->run();
 	}
 
