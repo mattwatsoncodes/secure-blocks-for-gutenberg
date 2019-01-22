@@ -40,22 +40,25 @@ export default class Inspector extends Component {
             <InspectorControls>
                 <PanelBody title={ __( 'Select Roles', 'secure-blocks-for-gutenberg' ) } className="secure-block-inspector">
                     <PanelRow>
-                        <label htmlFor="secure-block-roles" className="secure-block-inspector__label">
-                            { __( 'Secure content is presented to users that are logged-in and in the following roles:', 'secure-blocks-for-gutenberg' ) }
-                        </label>
-                    </PanelRow>
-                    <PanelRow>
-                        <Select
-                            className="secure-block-inspector__control"
-                            name='secure-block-roles'
-                            value={ selectedRoles }
-                            onChange={ handleRoleChange }
-                            options={ userRoles }
-                            isMulti='true'
-                            />
-                    </PanelRow>
-                    <PanelRow>
-                        <em className="muted">{ __( 'No selected roles mean that secure content will be presented to all logged-in users.', 'secure-blocks-for-gutenberg' ) }</em>
+                        <div class="components-base-control">
+                            <div class="components-base-control__field">
+                                <label htmlFor="secure-block-roles" className="secure-block-inspector__label components-base-control__label">
+                                { __( 'User Roles', 'secure-blocks-for-gutenberg' ) }
+                                </label>
+                                <Select
+                                    className="secure-block-inspector__control components-base-control__input"
+                                    name='secure-block-roles'
+                                    value={ selectedRoles }
+                                    onChange={ handleRoleChange }
+                                    options={ userRoles }
+                                    isMulti='true'
+                                />
+                            </div>
+                            <div class="components-base-control__help">
+                                <p>{ __( 'Secure content is presented to users that are logged-in and in the selected roles.', 'secure-blocks-for-gutenberg' ) }</p>
+                                <p>{ __( 'No selected roles mean that secure content will be presented to all logged-in users.', 'secure-blocks-for-gutenberg' ) }</p> 
+                            </div>
+                        </div>      
                     </PanelRow>
                 </PanelBody>
             </InspectorControls>

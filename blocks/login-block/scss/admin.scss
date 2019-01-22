@@ -5,4 +5,8 @@
  *
  * Styles for the secure block inspector
  */
-
+ .login-block-inspector {
+	.components-base-control__help {
+		margin-top: 0px;
+	}
+}

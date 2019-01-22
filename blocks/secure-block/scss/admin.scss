@@ -6,19 +6,7 @@
  * Styles for the secure block inspector
  */
 .secure-block-inspector {
-	label.secure-block-inspector__label {
-		max-width: 100%;
-	}
-
-	.secure-block-inspector__control {
-		width: 100%;
-
-		> div > div {
-			margin-top: 0px;
-		}
-	}
-
-	.muted {
-		opacity: .6;
+	.components-base-control__help {
+		margin-top: 0px;
 	}
 }

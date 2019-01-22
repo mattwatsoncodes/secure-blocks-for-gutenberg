@@ -168,12 +168,15 @@ class Main {
 	public function includes() {
 
 		// Load Classes
+		require_once 'data/class-api.php';
 		require_once 'blocks/login-block/php/class-login-block.php';
 		require_once 'blocks/secure-block/php/class-secure-block.php';
 
+		$api          = new API();
 		$login_block  = new Login_Block();
 		$secure_block = new Secure_Block();
 
+		$api->run();
 		$login_block->run();
 		$secure_block->run();
 	}

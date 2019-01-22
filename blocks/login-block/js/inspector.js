@@ -3,7 +3,8 @@
  */
 const {
 	PanelBody,
-	PanelRow,
+    PanelRow,
+    ToggleControl,
 } = wp.components;
 const { InspectorControls } = wp.editor;
 const { Component }         = wp.element;
@@ -21,6 +22,8 @@ export default class Inspector extends Component {
                 userNameType
             },
             setAttributes,
+            has_registration,
+            updateOption,
         } = this.props;
         
         const handleUserNameTypeChange = ( userNameType ) => { setAttributes( { userNameType } ) };
@@ -29,23 +32,32 @@ export default class Inspector extends Component {
             { label: 'Username', value: 'username' },
             { label: 'Email Address', value: 'email' },
         ];
+
+        console.log( has_registration );
             
         return (
             <InspectorControls>
-                <PanelBody title={ __( 'Allowed Login Method', 'secure-blocks-for-gutenberg' ) } className="login-block-inspector">
+                <PanelBody title={ __( 'Login Settings', 'secure-blocks-for-gutenberg' ) } className="login-block-inspector">
                     <PanelRow>
-                        <label for="login-block-user-type" class="login-block-inspector__label">
-                            { __( 'Are users allowed to login with only their email address, username, or both?', 'secure-blocks-for-gutenberg' ) }
-                        </label>
+                        <SelectControl
+                            label={ __( 'Allowed Login Method', 'secure-blocks-for-gutenberg' ) }
+                            className="secure-block-inspector__control"
+                            name="login-block-user-type"
+                            value={ userNameType }
+                            options={ userNameTypes }
+                            onChange={ handleUserNameTypeChange }
+                            help= { __( 'Allows users to login with only their email address, only their username, or allows them to use either.', 'secure-blocks-for-gutenberg' ) }
+                        />
                     </PanelRow>
+                </PanelBody>
+                <PanelBody title={ __( 'Registration Settings', 'secure-blocks-for-gutenberg' ) } className="login-block-inspector">
                     <PanelRow>
-                    <SelectControl
-                        className="secure-block-inspector__control"
-                        name="login-block-user-type"
-                        value={ userNameType }
-                        options={ userNameTypes }
-                        onChange={ handleUserNameTypeChange }
-                    />
+                        <ToggleControl
+                            label={ __( 'Anyone can register', 'secure-blocks-for-gutenberg' ) }
+                            checked={ has_registration }
+                            onChange={ (value) => { updateOption( { users_can_register: value } ) } }
+                            help= { __( 'Changes the global site settings for registration options, as can be found in Settings > General.', 'secure-blocks-for-gutenberg' ) }
+                        />
                     </PanelRow>
                 </PanelBody>
             </InspectorControls>

@@ -31,9 +31,6 @@ class Secure_Block {
 
 		// Register the Block
 		$this->register_dynamic_block();
-
-		// Load Classes
-		$this->includes();
 	}
 
 	/**
@@ -54,17 +51,6 @@ class Secure_Block {
 		register_block_type( 'matt-watson/secure-block', [
 			'render_callback' => 'matt_watson\secure_blocks_for_gutenberg\matt_watson_secure_blocks_for_gutenberg_render',
 		] );
-	}
-
-	/**
-	 * Include Classes
-	 */
-	public function includes() {
-
-		// Load Classes
-		require_once 'class-api.php';
-		$api = new API();
-		$api->run();
 	}
 }
 

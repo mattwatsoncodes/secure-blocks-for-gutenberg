@@ -11,12 +11,32 @@ import '../scss/style.scss';
  */
 import classnames from 'classnames';
 import Inspector from './inspector';
+import store from './store';
 
 /**
  * Internal Block Libraries
  */
 const { registerBlockType } = wp.blocks;
+const { compose }           = wp.compose;
+const { 
+	withDispatch, 
+	withSelect 
+} = wp.data;
 const { __ }                = wp.i18n;
+
+const applyWithDispatch = withDispatch( ( dispatch, { value } ) => {
+	return {
+		updateOption( value ) {
+			dispatch( 'matt-watson/login-block' ).updateOption( { option: { users_can_register: value } } );
+		},
+	};
+} );
+
+const applyWithSelect = withSelect( ( select ) => {
+	return {
+		has_registration: select( 'matt-watson/login-block' ).receiveOption( 'users_can_register' ),
+	};
+} );
 
 /**
  * Register secure block
@@ -37,6 +57,9 @@ export default registerBlockType(
 			passwordLabel: {
 				type:    'string',
 				default: __( 'Username or Email Address', 'secure-blocks-for-gutenberg' ),
+			},
+			passwordPlaceholder: {
+				type:    'string',
 			},
 			registerLabel: {
 				type:    'string',
@@ -63,27 +86,40 @@ export default registerBlockType(
 			userNameLabel: {
 				type:    'string',
 			},
+			userNamePlaceholder: {
+				type:    'string',
+			},
 			userNameType: {
 				type:    'string',
 				default: 'both',
 			},
 		},
-		edit: ( props => {
+		edit: compose(
+			[
+				applyWithDispatch,
+				applyWithSelect,
+			]
+		)( props => {
 			let { 
 				attributes: {
 					passwordLabel,
 					registerLabel,
+					passwordPlaceholder,
 					registerURL,
 					rememberMeLabel,
 					resetLabel,
 					resetURL,
 					submitLabel,
 					userNameLabel,
+					userNamePlaceholder,
 					userNameType,
 				}, 
 				className, 
+				has_registration,
 				isSelected,
 				setAttributes, 
+				updateOption,
+				poop,
 			} = props;
 
 			if ( ! userNameLabel ) {
@@ -104,33 +140,37 @@ export default registerBlockType(
 			}
 
 			return [
-				<Inspector { ...{ setAttributes, ...props } }/>,
+				<Inspector { ...{ setAttributes, ...props, has_registration, updateOption } }/>,
 				<form className={ classnames( className, 'login-block' ) } method="post" autocomplete="off">
 
 					<p class="field-group field-group--text">
 						<label class="field-group__label" for="username">
-							{ userNameLabel }
+							<span class="field-group__label-text">
+								{ userNameLabel }
+							</span>
 							<input
 								class="field-group__control"
 								type="text"
 								id="username"
 								name="username"
-								placeholder={ userNameLabel }
-								value="[Get this dynamically]"
+								placeholder={ userNamePlaceholder }
+								value=""
 							/>
 						</label>
 					</p>
 
 					<p class="field-group field-group--password">
 						<label class="field-group__label" for="password">
-							{ passwordLabel }
+							<span class="field-group__label-text">
+								{ passwordLabel }
+							</span>
 							<input
 								class="field-group__control"
 								type="password"
 								id="password"
 								name="password"
-								placeholder={ passwordLabel }
-								value="[Get this dynamically]"
+								placeholder={ passwordPlaceholder }
+								value=""
 							/>
 						</label>
 					</p>
@@ -145,7 +185,9 @@ export default registerBlockType(
 								placeholder={ rememberMeLabel }
 								value="forever"
 							/>
-							{ rememberMeLabel }
+							<span class="field-group__label-text">
+								{ rememberMeLabel }
+							</span>
 						</label>
 
 					</p>
