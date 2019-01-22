@@ -56,7 +56,7 @@ export default registerBlockType(
 		attributes: {
 			passwordLabel: {
 				type:    'string',
-				default: __( 'Username or Email Address', 'secure-blocks-for-gutenberg' ),
+				default: __( 'Password', 'secure-blocks-for-gutenberg' ),
 			},
 			passwordPlaceholder: {
 				type:    'string',
