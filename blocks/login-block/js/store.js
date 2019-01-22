@@ -23,11 +23,10 @@ const actions = {
 			path,
 		};
 	},
-	updateOption( path ) {
-		console.log( 'actions', path );
+	updateOption( option ) {
 		return {
 			type: 'UPDATE_OPTION',
-			path,
+			option,
 		};
 	},
 };
@@ -40,6 +39,12 @@ const store = registerStore( 'matt-watson/login-block', {
 
 		switch ( action.type ) {
 			case 'SET_OPTION':
+				return {
+					...state,
+					option: action.option,
+				};
+			case 'UPDATE_OPTION':
+				console.log('reducer', action );
 				return {
 					...state,
 					option: action.option,
@@ -69,11 +74,6 @@ const store = registerStore( 'matt-watson/login-block', {
 		RECEIVE_OPTION( action ) {
 			return apiFetch( { path: action.path } );
 		},
-
-		UPDATE_OPTION( action ) {
-			console.log( 'controls', action );
-			return apiFetch( { path: action.path } );
-		},
 	},
 
 	resolvers: {
@@ -84,7 +84,7 @@ const store = registerStore( 'matt-watson/login-block', {
 
 		* updateOption( item ) {
 			console.log( 'resolver', item );
-			const option = yield actions.updateOption( '/matt-watson/secure-blocks/v1/update/option/users_can_register/' );
+			const option = yield actions.updateOption( '/matt-watson/secure-blocks/v1/update/option/users_can_register/false/' );
 			return actions.setOption( option );
 		},
 	},
