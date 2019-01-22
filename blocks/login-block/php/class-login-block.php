@@ -151,7 +151,7 @@ function matt_watson_secure_blocks_for_gutenberg_login_block_render( $attributes
 
 		<?php
 		// Render the NOnce for security.
-		wp_nonce_field( 'form_login', 'form_login_nonce' );
+		wp_nonce_field( 'login_block', 'login_block_nonce' );
 		?>
 	</form>
 	<?php

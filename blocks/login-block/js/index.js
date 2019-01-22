@@ -18,7 +18,6 @@ import Inspector from './inspector';
 const { registerBlockType } = wp.blocks;
 const { __ }                = wp.i18n;
 
-
 /**
  * Register secure block
  */
@@ -46,6 +45,10 @@ export default registerBlockType(
 			registerURL: {
 				type:    'string',
 			},
+			rememberMeLabel: {
+				type:    'string',
+				default: __( 'Remember Me', 'secure-blocks-for-gutenberg' ),
+			},
 			resetLabel: {
 				type:    'string',
 				default: __( 'Lost your password?', 'secure-blocks-for-gutenberg' ),
@@ -71,6 +74,7 @@ export default registerBlockType(
 					passwordLabel,
 					registerLabel,
 					registerURL,
+					rememberMeLabel,
 					resetLabel,
 					resetURL,
 					submitLabel,
@@ -82,7 +86,7 @@ export default registerBlockType(
 				setAttributes, 
 			} = props;
 
-			if ( userNameLabel ) {
+			if ( ! userNameLabel ) {
 				switch ( userNameType ) {
 					case 'both': { 
 						userNameLabel = __( 'Username or Email Address', 'secure-blocks-for-gutenberg' );
@@ -119,13 +123,13 @@ export default registerBlockType(
 
 					<p class="field-group field-group--password">
 						<label class="field-group__label" for="password">
-							[PASSWORD]
+							{ passwordLabel }
 							<input
 								class="field-group__control"
 								type="password"
 								id="password"
 								name="password"
-								placeholder="[password_label]"
+								placeholder={ passwordLabel }
 								value="[Get this dynamically]"
 							/>
 						</label>
@@ -138,10 +142,10 @@ export default registerBlockType(
 								type="checkbox"
 								id="rememberme"
 								name="rememberme"
-								placeholder="[rememberme_label]"
+								placeholder={ rememberMeLabel }
 								value="forever"
 							/>
-							[rememberme_label]
+							{ rememberMeLabel }
 						</label>
 
 					</p>
@@ -151,7 +155,7 @@ export default registerBlockType(
 							class="field-group__control"
 							class="button button--primary"
 							type="submit"
-							value="[submit_label]"
+							value={ submitLabel }
 						/>
 					</p>
 
@@ -161,18 +165,18 @@ export default registerBlockType(
 									<a
 										class="login-block__navigation-link"
 										href="<?php echo esc_url( $registration_url ); ?>"
-										title="[register_label]"
+										title={ registerLabel }
 									>
-									[register_label]
+									{ registerLabel }
 									</a>
 								</li>
 							<li class="login-block__navigation-item">
 								<a
 									class="login-block__navigation-link"
 									href="<?php echo esc_url( $reset_url ); ?>"
-									title="[forgot_label]"
+									title={ resetLabel }
 								>
-								[forgot_label]
+								{ resetLabel }
 								</a>
 							</li>
 						</ul>
