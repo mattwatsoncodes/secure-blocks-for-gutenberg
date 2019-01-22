@@ -60,52 +60,75 @@ function matt_watson_secure_blocks_for_gutenberg_login_block_render( $attributes
 		return $content;
 	}
 
+	$has_registration = get_option( 'users_can_register' );
+	$registration_url = wp_registration_url();
+	$reset_url        = wp_lostpassword_url();
+
 	ob_start();
 	?>
-	<form id="form_login" class="o-box | c-login-form" method="post" autocomplete="off">
+	<form class="login-block" method="post" autocomplete="off">
 
-		<div class="c-login-form__input c-login-form__input--username">
-			<label for="username" class="u-hidden-visually">
+		<p class="field-group field-group--text">
+			<label class="field-group__label" for="username">
 				[USERNAME]
+				<input
+					class="field-group__control"
+					type="text"
+					id="username"
+					name="username"
+					placeholder="[username_label]"
+					value="[Get this dynamically]"
+				/>
 			</label>
-			<input
-				type="[type]"
-				id="username"
-				name="username"
-				placeholder="[username_label]"
-				value="[Get this dynamically]"
-			/>
-		</div>
+		</p>
 
-		<div class="c-login-form__input c-login-form__input--password">
-			<label for="username" class="u-hidden-visually">
+		<p class="field-group field-group--password">
+			<label class="field-group__label" for="password">
 				[PASSWORD]
+				<input
+					class="field-group__control"
+					type="password"
+					id="password"
+					name="password"
+					placeholder="[password_label]"
+					value="[Get this dynamically]"
+				/>
 			</label>
-			<input
-				type="password"
-				id="password"
-				name="password"
-				placeholder="[password_label]"
-				value="[Get this dynamically]"
-			/>
-		</div>
+		</p>
 
-		<div class="c-login-form__input c-login-form__input--submit">
+		<p class="field-group field-group--checkbox">
+			<label class="field-group__label" for="rememberme">
+				<input
+					class="field-group__control"
+					type="checkbox"
+					id="rememberme"
+					name="rememberme"
+					placeholder="[rememberme_label]"
+					value="forever"
+				/>
+				[rememberme_label]
+			</label>
+
+		</p>
+
+		<p class="field-group field-group--submit">
 			<input
-				class="c-btn c-btn--primary c-btn--small"
+				class="field-group__control"
+				class="button button--primary"
 				type="submit"
 				value="[submit_label]"
 			/>
-		</div>
+		</p>
 
-		<nav role="navigation">
-			<ul class="o-list-inline | c-login-form__navigation">
+		<nav role="navigation" class="login-block__navigation">
+			<ul class="login-block__navigation-list">
 				<?php
-				if ( [get_option( 'users_can_register' )] ) { // Make Dynamic
+				if ( $has_registration ) {
 					?>
-					<li class="o-list-inline__item">
+					<li class="login-block__navigation-item">
 						<a
-							href="<?php echo esc_url( wp_registration_url() ); ?>"
+							class="login-block__navigation-link"
+							href="<?php echo esc_url( $registration_url ); ?>"
 							title="[register_label]"
 						>
 						[register_label]
@@ -114,9 +137,10 @@ function matt_watson_secure_blocks_for_gutenberg_login_block_render( $attributes
 					<?php
 				}
 				?>
-				<li class="o-list-inline__item">
+				<li class="login-block__navigation-item">
 					<a
-						href="<?php echo esc_url( wp_lostpassword_url() ); ?>"
+						class="login-block__navigation-link"
+						href="<?php echo esc_url( $reset_url ); ?>"
 						title="[forgot_label]"
 					>
 					[forgot_label]
@@ -129,7 +153,6 @@ function matt_watson_secure_blocks_for_gutenberg_login_block_render( $attributes
 		// Render the NOnce for security.
 		wp_nonce_field( 'form_login', 'form_login_nonce' );
 		?>
-
 	</form>
 	<?php
 	$html = ob_get_contents();
