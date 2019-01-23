@@ -23,7 +23,7 @@ export default class Inspector extends Component {
             },
             setAttributes,
             hasRegistration,
-            updateOption,
+            handleHasRegistrationChange,
         } = this.props;
         
         const handleUserNameTypeChange = ( userNameType ) => { setAttributes( { userNameType } ) };
@@ -53,7 +53,7 @@ export default class Inspector extends Component {
                         <ToggleControl
                             label={ __( 'Anyone can register', 'secure-blocks-for-gutenberg' ) }
                             checked={ true == hasRegistration }
-                            onChange={ ( value ) => { updateOption( value ) } }
+                            onChange={ ( value ) => { handleHasRegistrationChange( value ); } }
                             help= { __( 'Changes the global site settings for registration options, as can be found in Settings > General.', 'secure-blocks-for-gutenberg' ) }
                         />
                     </PanelRow>

@@ -16,6 +16,7 @@ import store from './store';
 /**
  * Internal Block Libraries
  */
+const { apiFetch }          = wp;
 const { registerBlockType } = wp.blocks;
 const { compose }           = wp.compose;
 const { 
@@ -25,9 +26,10 @@ const {
 const { __ }                = wp.i18n;
 
 const applyWithDispatch = withDispatch( ( dispatch, { value } ) => {
+	
 	return {
 		updateOption( value ) {
-			dispatch( 'matt-watson/login-block' ).updateOption( { name: 'users_can_register', value: value } );
+			dispatch( 'matt-watson/login-block' ).updateOption( value );
 		},
 	};
 } );
@@ -119,9 +121,16 @@ export default registerBlockType(
 				isSelected,
 				setAttributes, 
 				updateOption,
-				poop,
 			} = props;
 
+			const handleHasRegistrationChange = ( value ) => { 
+				const option  = 'users_can_register';
+				const promise = apiFetch( { path: '/matt-watson/secure-blocks/v1/update/option/' + option + '/' + value + '/' } );
+				promise.then( ( value ) => { 
+					updateOption( value );
+				} );
+			};
+			
 			if ( ! userNameLabel ) {
 				switch ( userNameType ) {
 					case 'both': { 
@@ -140,7 +149,7 @@ export default registerBlockType(
 			}
 
 			return [
-				<Inspector { ...{ setAttributes, ...props, hasRegistration, updateOption } }/>,
+				<Inspector { ...{ setAttributes, ...props, hasRegistration, handleHasRegistrationChange } }/>,
 				<form className={ classnames( className, 'login-block' ) } method="post" autocomplete="off">
 
 					<p class="field-group field-group--text">

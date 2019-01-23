@@ -134,6 +134,6 @@ class API {
 
 		update_option( $option, 'true' === $value );
 
-		return $value;
+		return 'true' === $value;
 	}
 }

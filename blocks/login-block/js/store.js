@@ -44,10 +44,9 @@ const store = registerStore( 'matt-watson/login-block', {
 					option: action.option,
 				};
 			case 'UPDATE_OPTION':
-				const value = apiFetch( { path: '/matt-watson/secure-blocks/v1/update/option/' + action.option.name + '/' + action.option.value + '/' } );
 				return {
 					...state,
-					option: action.option.value,
+					option: action.option,
 				};
 		}
 
@@ -76,3 +75,5 @@ const store = registerStore( 'matt-watson/login-block', {
 		},
 	},
 } );
+
+export default store;
