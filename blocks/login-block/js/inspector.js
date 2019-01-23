@@ -22,7 +22,7 @@ export default class Inspector extends Component {
                 userNameType
             },
             setAttributes,
-            has_registration,
+            hasRegistration,
             updateOption,
         } = this.props;
         
@@ -32,8 +32,6 @@ export default class Inspector extends Component {
             { label: 'Username', value: 'username' },
             { label: 'Email Address', value: 'email' },
         ];
-
-        console.log( has_registration );
             
         return (
             <InspectorControls>
@@ -54,8 +52,8 @@ export default class Inspector extends Component {
                     <PanelRow>
                         <ToggleControl
                             label={ __( 'Anyone can register', 'secure-blocks-for-gutenberg' ) }
-                            checked={ has_registration }
-                            onChange={ (value) => { updateOption( { users_can_register: value } ) } }
+                            checked={ true == hasRegistration }
+                            onChange={ ( value ) => { updateOption( value ) } }
                             help= { __( 'Changes the global site settings for registration options, as can be found in Settings > General.', 'secure-blocks-for-gutenberg' ) }
                         />
                     </PanelRow>

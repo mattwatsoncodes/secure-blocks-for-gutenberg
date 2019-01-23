@@ -27,14 +27,14 @@ const { __ }                = wp.i18n;
 const applyWithDispatch = withDispatch( ( dispatch, { value } ) => {
 	return {
 		updateOption( value ) {
-			dispatch( 'matt-watson/login-block' ).updateOption( { option: { users_can_register: value } } );
+			dispatch( 'matt-watson/login-block' ).updateOption( { name: 'users_can_register', value: value } );
 		},
 	};
 } );
 
 const applyWithSelect = withSelect( ( select ) => {
 	return {
-		has_registration: select( 'matt-watson/login-block' ).receiveOption( 'users_can_register' ),
+		hasRegistration: select( 'matt-watson/login-block' ).receiveOption( 'users_can_register' ),
 	};
 } );
 
@@ -115,7 +115,7 @@ export default registerBlockType(
 					userNameType,
 				}, 
 				className, 
-				has_registration,
+				hasRegistration,
 				isSelected,
 				setAttributes, 
 				updateOption,
@@ -140,7 +140,7 @@ export default registerBlockType(
 			}
 
 			return [
-				<Inspector { ...{ setAttributes, ...props, has_registration, updateOption } }/>,
+				<Inspector { ...{ setAttributes, ...props, hasRegistration, updateOption } }/>,
 				<form className={ classnames( className, 'login-block' ) } method="post" autocomplete="off">
 
 					<p class="field-group field-group--text">
@@ -203,6 +203,7 @@ export default registerBlockType(
 
 					<nav role="navigation" class="login-block__navigation">
 						<ul class="login-block__navigation-list">
+							{ 1 == hasRegistration ? (
 								<li class="login-block__navigation-item">
 									<a
 										class="login-block__navigation-link"
@@ -212,6 +213,7 @@ export default registerBlockType(
 									{ registerLabel }
 									</a>
 								</li>
+							) : null }
 							<li class="login-block__navigation-item">
 								<a
 									class="login-block__navigation-link"

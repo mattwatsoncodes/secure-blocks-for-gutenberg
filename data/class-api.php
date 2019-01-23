@@ -100,7 +100,7 @@ class API {
 		// Register Rest Route
 		register_rest_route(
 			$this->namespace,
-			'/update/option/(?P<option>([A-Za-z0-9\_])+)/',
+			'/update/option/(?P<option>([A-Za-z0-9\_])+)/(?P<value>([A-Za-z0-9\_])+)/',
 			array(
 				'methods'             => 'GET',
 				'callback'            => array( $this, 'update_option' ),
@@ -130,12 +130,9 @@ class API {
 	 */
 	public function update_option( $request ) {
 		$option = isset( $request['option'] ) ? esc_attr( $request['option'] ) : null;
-		$value  = isset( $request['value'] ) ? esc_attr( $request['value'] ) : null;
+		$value  = isset( $request['value'] ) ? $request['value'] : false;
 
-		update_option( $option, $value );
-		
-		update_option( 'users_can_register', $false );
-		return false;
+		update_option( $option, 'true' === $value );
 
 		return $value;
 	}
